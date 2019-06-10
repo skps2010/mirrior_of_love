@@ -3,7 +3,9 @@ var mapH, mapW, map
 const bH = 30
 const bW = 100
 const space = 40
-const talk_height = 220
+const invRight = 100
+const invTop = 50
+var talk_height
 var c
 var blockList = []
 var select = null
@@ -12,6 +14,7 @@ var slot = [null, null, null]
 var size = 0
 var lastY
 var state = 0
+var menuText
 
 function unclick(e) {
     if (state == 1 && select) {
@@ -33,16 +36,16 @@ function unclick(e) {
             }
 
             if (slot[i]) {
-                slot[i].move(mapW - 50, 30 + size * space)
+                slot[i].move(mapW - invRight, invTop + size * space)
                 size++
             }
 
             slot[i] = select
             action(getString())
         } else {
-            if (lastY) select.move(mapW - 50, lastY)
+            if (lastY) select.move(mapW - invRight, lastY)
             else {
-                select.move(mapW - 50, 30 + size * space)
+                select.move(mapW - invRight, invTop + size * space)
                 size++
             }
         }
@@ -70,15 +73,20 @@ function getString() {
 }
 
 function inInv(b) {
-    return b.x >= mapW - 60
+    return b.x >= mapW - invRight - bW
 }
 
 function init() {
     map = $("#map")
-    mapH = map.height()
-    mapW = map.width()
+    map[0].width = $("body").width(); //document.width is obsolete
+    map[0].height = $("body").height(); //document.height is obsolete
+    mapH = map[0].height
+    mapW = map[0].width
+    talk_height = mapH * 4 / 10
+
     c = map.get(0).getContext("2d")
     setImg("風月鑒(模糊)")
+    menuText = $("#text").html()
 
     map.mousemove(e => {
         mx = e.offsetX
@@ -119,7 +127,7 @@ function init() {
             blockList.push(new block(mapW / 2, mapH - talk_height, "開始遊戲", "red"))
             state = 0
             talkCount++
-            $("#text").html("作者：盧昭華、曾敬豪、黃永棣、李俊彥 ")
+            $("#text").html(menuText)
             setImg("風月鑒(模糊)")
 
             update()
@@ -173,7 +181,7 @@ class block {
 }
 
 function add(name, color) {
-    blockList.push(new block(mapW - 50, 30 + size * space, name, color))
+    blockList.push(new block(mapW - invRight, invTop + size * space, name, color))
     size++
 }
 

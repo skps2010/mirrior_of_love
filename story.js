@@ -39,7 +39,7 @@ const oStory = {
         set: "story.flip^=1"
     },
     我照風月鑑10: {
-        text: '我將正面一照，只見鳳姐站在里面招手叫我．心中一喜，蕩悠悠的覺得進了鏡子，與鳳姐云雨一番，鳳姐仍送我出來．到了床上，哎喲了一聲，一睜眼，鏡子從手里掉過來，仍是反面立著一個骷髏．我自覺汗津津的，底下已遺了一灘精．',
+        text: '我將正面一照，只見鳳姐站在里面招手叫我．心中一喜，蕩悠悠的覺得進了鏡子，與鳳姐雲雨一番，鳳姐仍送我出來．到了床上，哎喲了一聲，一睜眼，鏡子從手里掉過來，仍是反面立著一個骷髏．我自覺汗津津的，底下已遺了一灘精．',
         img: "風月鑒(鳳姐)"
     },
     我照風月鑑11: {
@@ -373,7 +373,8 @@ function action(s) {
     if (o.end) {
         state = 2
         blockList.length = 0
-        blockList.push(new block(mapW / 2, mapH - talk_height, "回主畫面", "red"))
+        setTimeout(() => blockList.push(new block(mapW / 2, mapH - talk_height, "回主畫面", "red")), 1000)
+
         select = null
         size = 0
         for (let i = 0; i < 3; i++)

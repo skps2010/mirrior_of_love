@@ -13,6 +13,14 @@
     -webkit-user-select: none;
 }
 
+#author {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
 body {
     margin: 0;
     padding: 0;

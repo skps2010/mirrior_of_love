@@ -15,6 +15,7 @@ var size = 0
 var lastY
 var state = 0
 var menuText
+const boxColor = ["red", "blue"]
 
 function unclick(e) {
     if (state == 1 && select) {
@@ -112,7 +113,7 @@ function init() {
         if (b && b.name == "開始遊戲") {
             blockList.pop()
             for (let i = 0; i < 3; i++)
-                blockList.push(new block(mapW / 2 - 150 + i * 150, mapH - talk_height, "", "gray", true))
+                blockList.push(new block(mapW / 2 - 150 + i * 150, mapH - talk_height, "", boxColor[i % 2], true))
 
             story = JSON.parse(JSON.stringify(oStory))
             action("start")
@@ -162,8 +163,17 @@ class block {
     }
 
     update() {
-        c.fillStyle = this.color
-        c.fillRect(this.x - bW / 2, this.y - bH / 2, bW, bH)
+        if (this.fix) {
+            c.beginPath();
+            c.strokeStyle = this.color;
+            c.lineWidth = 3;
+            c.rect(this.x - bW / 2 - 1, this.y - bH / 2 - 1, bW + 2, bH + 2)
+            c.stroke();
+        } else {
+            c.fillStyle = this.color
+            c.fillRect(this.x - bW / 2, this.y - bH / 2, bW, bH)
+        }
+
         c.fillStyle = "black"
         c.font = "20px Arial";
         c.textAlign = "center";

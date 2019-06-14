@@ -85,6 +85,10 @@ function init() {
     mapW = map[0].width
     talk_height = mapH * 4 / 10
 
+    let b = invRight * 2 * 100 / mapW | 0;
+    $("#text").css("left", b + "%");
+    $("#text").css("width", (100 - b * 2) + "%");
+
     c = map.get(0).getContext("2d")
     setImg("風月鑒(模糊)")
     menuText = $("#text").html()

@@ -11,4 +11,5 @@
 黃永棣：圖畫 
 
 ## 遊玩網址
+https://skps2010.itch.io/mirrior  <===== 速度較快
 http://htmlpreview.github.io/?https://github.com/skps2010/mirrior_of_love/blob/master/index.html

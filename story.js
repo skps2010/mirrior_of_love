@@ -379,7 +379,8 @@ function action(s) {
     if (o.end) {
         state = 2
         blockList.length = 0
-        setTimeout(() => blockList.push(new block(mapW / 2, mapH - talk_height, "回主畫面", "red")), 1000)
+        setTimeout(() => { blockList.push(new block(mapW / 2, mapH - talk_height, "回主畫面", "red"));
+            update() }, 1000)
 
         select = null
         size = 0
